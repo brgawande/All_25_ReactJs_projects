@@ -5,6 +5,7 @@ import { sidebarmenu } from "./components/6_Tree_View_Menu_UI/TreeviewConstants"
 import TreeViewMenuUi from "./components/6_Tree_View_Menu_UI/TreeViewMenuUi";
 import QrGenerator from "./components/7_Qr_Code_Generator/QrGenerator";
 import LightandDarkMode from "./components/8_Light_And_Dark_Mode/LightandDarkMode";
+import CustomScrollIndicator from "./components/9_Custome_scroll_indicator/CustomScrollIndicator";
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
       {/* <GenerateRandomColors /> */}
       {/* <StarRating starsNumbers={10} /> */}
       {/* <QrGenerator /> */}
-      <LightandDarkMode />
+      {/* <LightandDarkMode /> */}
+      <CustomScrollIndicator />
     </div>
   );
 }
