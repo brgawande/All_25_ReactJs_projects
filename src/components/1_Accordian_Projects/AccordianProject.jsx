@@ -6,16 +6,22 @@ const AccordianProject = () => {
   const [enableMultipleSelect, setEnableMultipleSelect] = useState(false);
   const [showAnswer, setShowAnswer] = useState(null);
   const [multipleItems, setMultipleItems] = useState([]);
-
+  console.log(enableMultipleSelect);
   const showanswerHandler = (getCurrentId) => {
     //   if the current id is already selected then make it null otherwise add getCurrentId
     setShowAnswer(getCurrentId === showAnswer ? null : getCurrentId);
   };
 
-  const enableMultiSelectHandler = (index) => {
-    if (multipleItems.indexOf(index + 1) === -1) {
-      multipleItems.push(index + 1);
+  const enableMultiSelectHandler = (getCurrentId) => {
+    //   first we will compy multipleItemsArray so that it dont get muted or duplicated
+    let copyMultipleItems = [...multipleItems];
+    const findIndexOfCurrentId = copyMultipleItems.indexOf(getCurrentId);
+    if (findIndexOfCurrentId === -1) {
+      copyMultipleItems.push(getCurrentId);
+    } else {
+      copyMultipleItems.splice(findIndexOfCurrentId, 1);
     }
+    setMultipleItems(copyMultipleItems);
     console.log(multipleItems);
   };
 
@@ -40,7 +46,7 @@ const AccordianProject = () => {
                   <div
                     onClick={
                       enableMultipleSelect
-                        ? () => enableMultiSelectHandler(index)
+                        ? () => enableMultiSelectHandler(item?.id)
                         : () => showanswerHandler(item?.id)
                     }
                     className="flex items-center justify-between"
@@ -48,7 +54,14 @@ const AccordianProject = () => {
                     <h1>{item?.question}</h1>
                     <h1 className="text-3xl mb-1 cursor-pointer">+</h1>
                   </div>
-                  {showAnswer === item?.id ? (
+                  {/* jo question ki ID select rahengi usi question ka answer show karna */}
+                  {enableMultipleSelect ? (
+                    multipleItems.indexOf(item?.id) !== -1 && (
+                      <div className="py-2">
+                        <h1>{item?.answer}</h1>
+                      </div>
+                    )
+                  ) : showAnswer === item?.id ? (
                     <div className="py-2">
                       <h1>{item?.answer}</h1>
                     </div>
