@@ -1,5 +1,6 @@
 import StopWatch_Timer from "./components/0_StopWatch_timer/StopWatch_Timer";
 import CustomeTabs from "./components/10_Custom_tabs/CustomeTabs";
+import ModalPopUp from "./components/11_Modal_Popup/ModalPopUp";
 import AccordianProject from "./components/1_Accordian_Projects/AccordianProject";
 import GenerateRandomColors from "./components/2_Generate_random_colors/GenerateRandomColors";
 import StarRating from "./components/3_Star_Rating/StarRating";
@@ -20,7 +21,8 @@ function App() {
       {/* <LightandDarkMode /> */}
       {/* <CustomScrollIndicator /> */}
       {/* <StopWatch_Timer /> */}
-      <CustomeTabs />
+      {/* <CustomeTabs /> */}
+      <ModalPopUp />
     </div>
   );
 }
