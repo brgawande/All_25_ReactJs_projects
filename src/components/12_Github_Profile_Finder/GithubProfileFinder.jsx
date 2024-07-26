@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 const GithubProfileFinder = () => {
   const [gitProfile, setGitProfile] = useState("brgawande");
   const [gitData, setGitData] = useState(null);
+  const [loading, setLoading] = useState(false);
   //   const [search, setSearch] = useState(false);
   const submitHandler = (e) => {
     e.preventDefault();
@@ -15,6 +16,7 @@ const GithubProfileFinder = () => {
   };
   useEffect(() => {
     const fetchdata = async () => {
+      setLoading(true);
       try {
         const response = await fetch(
           `https://api.github.com/users/${gitProfile}`
@@ -24,6 +26,7 @@ const GithubProfileFinder = () => {
         }
         const data = await response.json();
         setGitData(data);
+        setLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -32,6 +35,7 @@ const GithubProfileFinder = () => {
     fetchdata();
   }, [gitProfile]);
   console.log(gitData);
+
   return (
     <div>
       <form action="" onSubmit={submitHandler}>
@@ -50,7 +54,7 @@ const GithubProfileFinder = () => {
         </div>
       </form>
 
-      {gitData && (
+      {!loading && (
         <div className="card dflex my-4">
           <RecipeReviewCard
             id={gitData?.login}
