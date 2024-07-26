@@ -16,7 +16,13 @@ const ModalPopUp = () => {
         </Button>
       </div>
       {/* yaha pe handleClose call honga aur phir function call honga */}
-      {isOpen && <PopupContaiuner isOpen={isOpen} handleClose={handleClose} />}
+      {isOpen && (
+        <PopupContaiuner
+          isOpen={isOpen}
+          handleClose={handleClose}
+          header={"This is Header"}
+        />
+      )}
     </div>
   );
 };

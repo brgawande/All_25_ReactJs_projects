@@ -1,7 +1,7 @@
 import React from "react";
 import { GiSplitCross } from "react-icons/gi";
 
-const PopupContaiuner = ({ isOpen, handleClose }) => {
+const PopupContaiuner = ({ isOpen, handleClose, header }) => {
   if (!isOpen) return null;
   return (
     <div>
@@ -12,7 +12,7 @@ const PopupContaiuner = ({ isOpen, handleClose }) => {
           className="absolute right-5 top-2 text-3xl"
         />
         <div className="header bb py-6 dflex">
-          <h1 className="text-2xl font-bold">Header Section</h1>
+          <h1 className="text-2xl font-bold">{`${header}`}</h1>
         </div>
         <div className="body bb py-20 dflex">
           <h1 className="text-2xl font-bold">Body Section</h1>
